@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp_restapi/pages/home_page.dart';
 import 'package:todoapp_restapi/pages/intro_page.dart';
 
 void main() {
@@ -12,8 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: IntroPage(),
-    );
+        debugShowCheckedModeBanner: false,
+        home: IntroPage(),
+        routes: {
+          '/intropage': (context) => const IntroPage(),
+          '/homepage' : (context) => const HomePage(),
+        });
   }
 }
