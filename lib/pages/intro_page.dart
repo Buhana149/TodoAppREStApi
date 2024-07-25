@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp_restapi/components/button.dart';
-import 'package:todoapp_restapi/pages/home_page.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
