@@ -9,22 +9,25 @@ class CategoriesTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(5.0),
       child: Container(
-        width: 100,
-        height: 50,
+        width: 120,
+        height: 70,
         decoration: BoxDecoration(
-            color: secondaryColor, borderRadius: BorderRadius.circular(5)),
-        child: Center(
-            child: Row(
-          children: [
-            Icon(icon),
-            Text(child,
-              style: const TextStyle(color: Colors.white),
-            ),
-           
-          ],
-        )),
+            color: secondaryColor, borderRadius: BorderRadius.circular(40)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+         children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(icon),
+        ),
+        Text(child,
+          style: const TextStyle(color: Colors.white),
+        ),
+                   
+                  ],
+                ),
       ),
     );
   }
