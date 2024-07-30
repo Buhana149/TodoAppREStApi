@@ -36,15 +36,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: primaryColor,
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          title: const Text(
-            'CheckBox',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
         bottomNavigationBar: GNav(
             selectedIndex: _selectedIndex,
             onTabChange: _navigateBottomBar,

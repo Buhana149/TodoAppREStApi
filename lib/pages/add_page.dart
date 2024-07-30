@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp_restapi/components/colors.dart';
 
 class AddPage extends StatefulWidget {
   const AddPage({super.key});
@@ -10,6 +11,8 @@ class AddPage extends StatefulWidget {
 class _AddPageState extends State<AddPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: primaryColor,
+    );
   }
 }
