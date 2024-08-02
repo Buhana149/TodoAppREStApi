@@ -1,23 +1,27 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:todoapp_restapi/model/todo.dart';
 
 class TodoServices {
   Future<List<Todo>> getAll() async {
-    final url = 'https://jsonplaceholder.typicode.com/todos';
+    final url = 'https://api.nstack.in/v1/todos?page=1&limit=10';
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     if (response.statusCode == 200) {
-      final json = jsonDecode(response.body) as List;
-      final todos = json.map((e) {
+      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      final items = json["items"] as List;
+      print('json is ${json}');
+      print('json is ${json}');
+      final todos = items.map((e) {
         return Todo(
-            id: e['id'],
-            userId: e['userId'],
             title: e['title'],
-            isCompleted: e['completed']);
+            description: e['description'],
+            is_completed: e['is_completed']);
       }).toList();
       return todos;
+      // return List.empty();
     } else {
       throw 'Something went wrong';
     }

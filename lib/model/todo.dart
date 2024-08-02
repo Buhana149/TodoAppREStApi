@@ -1,12 +1,10 @@
 class Todo {
-  final int id;
-  final int userId;
   final String title;
-   bool isCompleted;
+  final String description;
+   bool is_completed;
 
   Todo(
-      {required this.id,
-      required this.userId,
+      {required this.description,
       required this.title,
-      required this.isCompleted});
+      required this.is_completed});
 }

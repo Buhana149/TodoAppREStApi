@@ -12,6 +12,7 @@ class TodoProvider extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
     final response = await _service.getAll();
+    print("response is $response");
     _todos = response;
     isLoading = false;
     notifyListeners();

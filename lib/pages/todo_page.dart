@@ -15,8 +15,8 @@ class _TodoPageState extends State<TodoPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        Provider.of<TodoProvider>(context, listen: false).getAllTodos();
+      (timeStamp) async {
+       await Provider.of<TodoProvider>(context, listen: false).getAllTodos();
       },
     );
   }
@@ -27,24 +27,36 @@ class _TodoPageState extends State<TodoPage> {
         return Center(child: CircularProgressIndicator());
       }
       final todos = value.todos;
-      return Scaffold(
-          appBar: AppBar(
-            title: Text('To Do List'),
+      return Column (
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('To Do List',
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold
+            ),),
           ),
-          body: ListView.builder(
-              itemCount: todos.length,
-              itemBuilder: (context, index) {
-                final todo = todos[index];
-                return ListTile(
-                  title: Text(todo.title),
-                  leading: Text(todo.id.toString()),
-                  trailing: Checkbox(
-                      value: todo.isCompleted,
-                      onChanged: (newBool) {
-                        todo.isCompleted == newBool;
-                      }),
-                );
-              }));
+          Container(
+            height: 700,
+            child: ListView.builder(
+                itemCount: todos.length,
+                itemBuilder: (context, index) {
+                  final todo = todos[index];
+                  return ListTile(
+                    title: Text(todo.title),
+                    leading: Text(todo.description),
+                    trailing: Checkbox(
+                        value: todo.is_completed,
+                        onChanged: (newBool) {
+                          todo.is_completed == newBool;
+                        }),
+                  );
+                }),
+          )
+              
+              ]);
     });
   }
 }
