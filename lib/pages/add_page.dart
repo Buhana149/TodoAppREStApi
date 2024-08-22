@@ -31,7 +31,7 @@ void showSuccessMessage(String message) {
           backgroundColor: Colors.red);
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
-      Future<void> submitData() async {
+  Future<void> submitData() async {
 //get data from form
   final category = categoryController.text;
       final description = descriptionController.text;

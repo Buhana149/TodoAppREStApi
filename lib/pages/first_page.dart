@@ -84,7 +84,7 @@ class _FirstPageState extends State<FirstPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
+                child: SizedBox(
                   height: 50,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -179,7 +179,7 @@ class _FirstPageState extends State<FirstPage> {
                   ],
                 ),
               ),
-              Container(height: 500, child: const TodoPage())
+              const SizedBox(height: 500, child: TodoPage())
             ],
           )),
     );

@@ -24,11 +24,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Widget> _pages = [
-    FirstPage(),
-    TodoPage(),
-    AddPage(),
-    CalendarPage(),
-    ProfilePage(),
+    const FirstPage(),
+    const TodoPage(),
+    const AddPage(),
+    const CalendarPage(),
+    const ProfilePage(),
   ];
 
 

@@ -12,9 +12,21 @@ class TodoProvider extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
     final response = await _service.getAll();
-    print("response is $response");
     _todos = response;
     isLoading = false;
     notifyListeners();
   }
+   void updateTodo(String id, String title, String description, bool isCompleted) {
+    final index = _todos.indexWhere((todo) => todo.id == id);
+    if (index != -1) {
+      _todos[index] = Todo(
+        id: id,
+        title: title,
+        description: description,
+        is_completed: isCompleted,
+      );
+      notifyListeners(); // Notify listeners that the state has changed
+    }
+  }
+
 }
