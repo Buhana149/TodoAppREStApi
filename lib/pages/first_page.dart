@@ -12,24 +12,26 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
+  
   final List<Categories> _categories = [
     Categories(icon: Icons.person, type: 'Personal'),
     Categories(icon: Icons.work_outline, type: 'Work'),
     Categories(icon: Icons.portrait_sharp, type: 'Portofolio'),
     Categories(icon: Icons.hotel_outlined, type: 'Hobbies')
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: primaryColor,
-          title: const Text(
-            'CheckBox',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+        backgroundColor: primaryColor,
+        title: const Text(
+          'CheckBox',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
           ),
         ),
+      ),
       backgroundColor: primaryColor,
       body: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -174,12 +176,22 @@ class _FirstPageState extends State<FirstPage> {
                     SizedBox(
                       width: 140,
                     ),
-                    Text('View All'),
-                    Icon(Icons.keyboard_arrow_right_outlined)
+                    Row(
+                        children: [
+                          Text('View All'),
+                      Icon(Icons.keyboard_arrow_right_outlined)
+                        ],
+                      ),                    
                   ],
                 ),
               ),
-              const SizedBox(height: 500, child: TodoPage())
+               SizedBox(
+                  height: 300,
+                  child: ListView.builder(
+                    itemCount: 2,
+                      itemBuilder: (context, index) {
+                    return  const TodoPage();
+                  }, ))
             ],
           )),
     );

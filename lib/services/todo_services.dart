@@ -10,6 +10,7 @@ class TodoServices {
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body) as Map<String, dynamic>;
       final items = json["items"] as List;
+      print("object items from server are ${response.body}");
       final todos = items.map((e) {
         return Todo(
             id: e['_id'],
@@ -24,4 +25,7 @@ class TodoServices {
       throw 'Something went wrong';
     }
   }
+
+  // delete 
+  // put
 }

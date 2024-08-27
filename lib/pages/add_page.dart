@@ -17,7 +17,7 @@ class _AddPageState extends State<AddPage> {
     TextEditingController categoryController = TextEditingController();
     TextEditingController descriptionController = TextEditingController();
 
-void showSuccessMessage(String message) {
+    void showSuccessMessage(String message) {
       final snackBar = SnackBar(content: Text(message));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
@@ -31,9 +31,10 @@ void showSuccessMessage(String message) {
           backgroundColor: Colors.red);
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
-  Future<void> submitData() async {
+
+    Future<void> submitData() async {
 //get data from form
-  final category = categoryController.text;
+      final category = categoryController.text;
       final description = descriptionController.text;
       final body = {
         "title": category,
@@ -55,8 +56,8 @@ void showSuccessMessage(String message) {
         showErrorMessage('Creation Failed');
       }
     }
-     
-       return Scaffold(
+
+    return Scaffold(
       backgroundColor: primaryColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
