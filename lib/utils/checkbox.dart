@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoapp_restapi/model/todo.dart';
@@ -28,7 +26,7 @@ class _LeadingCheckBoxState extends State<LeadingCheckBox> {
           if (newValue != null) {
             widget.todo.is_completed = newValue;
 
-            value.updateTodoCompletionStatus(widget.todo);
+            value.updateTodoCompletionStatusProvider(widget.todo);
           }
         });
     });

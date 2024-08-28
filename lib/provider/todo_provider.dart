@@ -1,11 +1,11 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:todoapp_restapi/model/todo.dart';
 import 'package:todoapp_restapi/services/todo_services.dart';
 
 class TodoProvider extends ChangeNotifier {
-  final _service = TodoServices();
+  final _service = TodoServices(
+    callback: () {},
+  );
   bool isLoading = false;
   List<Todo> _todos = [];
   List<Todo> get todos => _todos;
@@ -28,8 +28,6 @@ class TodoProvider extends ChangeNotifier {
     String description,
     bool isCompleted,
   ) {
-    print("object updated $isCompleted");
-
     final index = _todos.indexWhere((todo) => todo.id == id);
     if (index != -1) {
       _todos[index] = Todo(
@@ -43,33 +41,31 @@ class TodoProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> updateTodoCompletionStatus(Todo todo) async {
-    
-    final url = 'https://api.nstack.in/v1/todos/${todo.id}'; // aici e buba
-    final uri = Uri.parse(url);
-    final body = jsonEncode({
-      'title': todo.title,
-      'description': todo.description,      
-      'is_completed': todo.is_completed});
-
+  Future<void> deleteByIdProvider(String id) async {
+    screenIsLoading(true);
     try {
-      final response = await http.put(
-        uri,
-        headers: {'Content-Type': 'application/json'},
-        body: body,
-      );
-      print("error is ${response.body}");
-      if (response.statusCode == 200) {
-      } else {
-        throw 'Something went wrong - ${response.statusCode}';
-      }
+      await _service.deleteById(id);
+      _todos.removeWhere((todo) => todo.id == id);
+      notifyListeners();
     } catch (e) {
-      print('Error: $e ');
+      print("Error deleting todo: $e");
+    } finally {
+      screenIsLoading(false);
     }
     notifyListeners();
+  }
 
-    await getAllTodos();
-
+  Future<void> updateTodoCompletionStatusProvider(Todo todo) async {
+    try {
+      await _service.updateTodoCompletionStatus(todo);
+      final index = _todos.indexWhere((t) => t.id == todo.id);
+      if (index != -1) {
+        _todos[index] = todo;
+        notifyListeners();
+      }
+    } catch (e) {
+      print('Error updating todo completion status: $e');
+    }
     notifyListeners();
   }
 }

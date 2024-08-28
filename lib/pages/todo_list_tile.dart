@@ -27,6 +27,11 @@ class ToDoListTile extends StatelessWidget {
               todo: todo,
             )));
   }
+  void _deleteByIdProvider() async {
+    // Access the provider and call the delete method
+    final todoProvider = Provider.of<TodoProvider>(context, listen: false);
+    await todoProvider.deleteByIdProvider(todo.id);
+  }
 
   @override
   Widget build(BuildContext context) => Consumer<TodoProvider>(
@@ -40,6 +45,7 @@ class ToDoListTile extends StatelessWidget {
             if (value == 'edit') {
               openEditPage();
             } else if (value == 'delete') {
+              _deleteByIdProvider();
               //delete and remove the item
               //   deleteById(todo.id); use provider instead
             }
@@ -56,13 +62,3 @@ class ToDoListTile extends StatelessWidget {
             ];
           })));
 }
-//   Future<void> deleteById(String id) async {
-//     final url = 'https://api.nstack.in/v1/todos/$id';
-//     final uri = Uri.parse(url);
-//     final response = await http.delete(uri);
-//     if (response.statusCode == 200) {
-//       callback();
-//     } else {
-//       throw 'Somethng went wrong';
-//     }
-//   }
