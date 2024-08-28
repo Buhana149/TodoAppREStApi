@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todoapp_restapi/pages/todo_list_tile.dart';
+import 'package:todoapp_restapi/utils/todo_list_tile.dart';
 import 'package:todoapp_restapi/provider/todo_provider.dart';
 class TodoPage extends StatefulWidget {
   const TodoPage({super.key});
@@ -39,20 +39,26 @@ class _TodoPageState extends State<TodoPage> {
               ),
             ),
             // ignore: sized_box_for_whitespace
-            Container(
-              height: 700,
-              child: ListView.builder(
-                  itemCount: todos.length,
-                  itemBuilder: (context, index) {
-                    final todo = todos[index];
-                    return ToDoListTile(
-                      todo: todo,
-                      context: context,
-                      callback: () async {
-                        await value.getAllTodos();
-                      },
-                    );
-                  }),
+            Visibility(
+              visible: todos.isNotEmpty,
+              replacement: const Center(
+                child: Text('No Todo Item'),
+              ),
+              child: Container(
+                height: 700,
+                child: ListView.builder(
+                    itemCount: todos.length,
+                    itemBuilder: (context, index) {
+                      final todo = todos[index];
+                      return ToDoListTile(
+                        todo: todo,
+                        context: context,
+                        callback: () async {
+                          await value.getAllTodos();
+                        },
+                      );
+                    }),
+              ),
             )
           ]);
     });

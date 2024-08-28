@@ -24,9 +24,13 @@ class ToDoListTile extends StatelessWidget {
         context: context,
         builder: (context) => Dialog(
                 child: EditDialogPage(
+              onUpdate: () {
+                Provider.of<TodoProvider>(context, listen: false).getAllTodos();
+              },
               todo: todo,
             )));
   }
+
   void _deleteByIdProvider() async {
     // Access the provider and call the delete method
     final todoProvider = Provider.of<TodoProvider>(context, listen: false);

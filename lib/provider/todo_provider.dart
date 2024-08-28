@@ -68,4 +68,40 @@ class TodoProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  Future<void> submitTodoProvider(String category, String description) async {
+    try {
+      bool isSuccessful = await _service.submitTodo(
+        category,
+        description,
+      );
+
+      if (isSuccessful) {
+        await getAllTodos();
+      }
+    } catch (e) {
+      print('Error updating todo completion status: $e');
+    }
+    notifyListeners();
+  }
+
+  Future<void> editDataProvider(
+    
+      String category, String description, Todo todo) async {
+    try {
+      bool isSuccessful = await _service.editData(
+        category,
+        description,
+        todo,
+      );
+
+      if (isSuccessful) {
+        await getAllTodos();
+      }
+    } catch (e) {
+      print('Error updating todo completion status: $e');
+    }
+
+    notifyListeners();
+  }
 }

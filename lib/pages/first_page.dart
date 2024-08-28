@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp_restapi/components/colors.dart';
+import 'package:todoapp_restapi/components/font_sizes.dart';
 import 'package:todoapp_restapi/pages/todo_page.dart';
 import 'package:todoapp_restapi/utils/categories.dart';
 import 'package:todoapp_restapi/utils/categories_tile.dart';
@@ -12,7 +13,6 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
-  
   final List<Categories> _categories = [
     Categories(icon: Icons.person, type: 'Personal'),
     Categories(icon: Icons.work_outline, type: 'Work'),
@@ -39,9 +39,7 @@ class _FirstPageState extends State<FirstPage> {
             children: [
               const Text(
                 'Hey David,',
-                style: TextStyle(
-                  fontSize: 15,
-                ),
+                style: small,
               ),
               const Text(
                 'Keep it Going, You Got This!',
@@ -120,7 +118,7 @@ class _FirstPageState extends State<FirstPage> {
                             ),
                             Text(
                               'Due this week',
-                              style: TextStyle(color: Colors.white),
+                              style: white,
                             ),
                             Text(
                               '2 projects',
@@ -153,7 +151,7 @@ class _FirstPageState extends State<FirstPage> {
                           ),
                           Text(
                             'This week\'s Activity',
-                            style: TextStyle(color: Colors.white),
+                            style: white,
                           ),
                           Text(
                             '48 Tasks',
@@ -165,33 +163,34 @@ class _FirstPageState extends State<FirstPage> {
                   )
                 ],
               ),
-               const Padding(
+              const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Row(
                   children: [
                     Text(
                       'Tasks for today',
-                      style: TextStyle(fontSize: 20),
+                      style: small,
                     ),
                     SizedBox(
                       width: 140,
                     ),
                     Row(
-                        children: [
-                          Text('View All'),
-                      Icon(Icons.keyboard_arrow_right_outlined)
-                        ],
-                      ),                    
+                      children: [
+                        Text('View All'),
+                        Icon(Icons.keyboard_arrow_right_outlined)
+                      ],
+                    ),
                   ],
                 ),
               ),
-               SizedBox(
+              SizedBox(
                   height: 300,
                   child: ListView.builder(
                     itemCount: 2,
-                      itemBuilder: (context, index) {
-                    return  const TodoPage();
-                  }, ))
+                    itemBuilder: (context, index) {
+                      return const TodoPage();
+                    },
+                  ))
             ],
           )),
     );
