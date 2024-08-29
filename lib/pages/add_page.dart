@@ -30,7 +30,10 @@ class _AddPageState extends State<AddPage> {
               child: SafeArea(
                 child: Text(
                   'Add Page',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -63,10 +66,10 @@ class _AddPageState extends State<AddPage> {
               ),
             ),
             GestureDetector(
-              onTap:() async {
+              onTap: () async {
                 await submitTodo(value);
               },
-               child: const Padding(
+              child: const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: MyButton(text: 'Add now!'),
               ),
@@ -93,18 +96,17 @@ class _AddPageState extends State<AddPage> {
   }
 
   Future<void> submitTodo(TodoProvider todoProvider) async {
-
     await todoProvider.submitTodoProvider(
       categoryController.text,
       descriptionController.text,
     );
 
     if (!todoProvider.isLoading) {
-       if (todoProvider.todos.contains(todoProvider.todos.last)) {
+      if (todoProvider.todos.contains(todoProvider.todos.last)) {
         categoryController.clear();
         descriptionController.clear();
         showSuccessMessage('Creation Success');
-    } else {
+      } else {
         showErrorMessage('Creation Failed');
       }
     }
