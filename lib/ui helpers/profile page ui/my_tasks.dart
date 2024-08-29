@@ -8,6 +8,7 @@ class MyTasks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // the 3 paddings below can be extracted as a component
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -34,6 +35,8 @@ class MyTasks extends StatelessWidget {
             ],
           ),
         ),
+
+        
          Padding(
            padding: const EdgeInsets.all(8.0),
            child: Row(

@@ -18,6 +18,7 @@ class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // extract this app bar as well, maybe it 
       appBar: AppBar(
         backgroundColor: primaryColor,
         title: const Text(

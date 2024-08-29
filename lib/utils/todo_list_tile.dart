@@ -28,7 +28,7 @@ class ToDoListTile extends StatelessWidget {
                 Provider.of<TodoProvider>(context, listen: false).getAllTodos();
               },
               todo: todo,
-            )));
+            ),),);
   }
 
   void _deleteByIdProvider() async {

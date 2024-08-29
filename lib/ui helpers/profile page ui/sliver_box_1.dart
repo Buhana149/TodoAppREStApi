@@ -3,6 +3,7 @@ import 'package:todoapp_restapi/components/colors.dart';
 import 'package:todoapp_restapi/components/font_sizes.dart';
 import 'package:todoapp_restapi/ui%20helpers/profile%20page%20ui/my_tasks.dart';
 
+// rename this so it is more meaningful, based on it;s purpose maybe
 class SliverBox1 extends StatelessWidget {
   const SliverBox1({super.key});
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp_restapi/components/font_sizes.dart';
 
+// rename this so it is more meaningful, based on it;s purpose maybe
 class SliverBox3 extends StatelessWidget {
   const SliverBox3({super.key});
 

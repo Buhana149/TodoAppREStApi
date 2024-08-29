@@ -47,6 +47,7 @@ class _AddPageState extends State<AddPage> {
                     'New objective',
                     style: small,
                   ),
+                  // this can be extracted
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: TextField(
@@ -54,6 +55,7 @@ class _AddPageState extends State<AddPage> {
                       decoration: const InputDecoration(hintText: 'Category'),
                     ),
                   ),
+                  // to here
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: TextField(
@@ -62,6 +64,8 @@ class _AddPageState extends State<AddPage> {
                           const InputDecoration(hintText: 'Description'),
                     ),
                   ),
+
+                  // controller and hint text as parameters
                 ],
               ),
             ),
