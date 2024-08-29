@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp_restapi/components/edit_profile_button.dart';
 import 'package:todoapp_restapi/components/font_sizes.dart';
-import 'package:todoapp_restapi/utils/activity_options.dart';
-import 'package:todoapp_restapi/utils/profile_drawer.dart';
-import 'package:todoapp_restapi/utils/settings_options.dart';
+import 'package:todoapp_restapi/ui%20helpers/drawer%20ui/activity_options.dart';
+import 'package:todoapp_restapi/ui%20helpers/drawer%20ui/profile_drawer.dart';
+import 'package:todoapp_restapi/ui%20helpers/drawer%20ui/settings_options.dart';
 
 class DrawerPage extends StatelessWidget {
   const DrawerPage({super.key});

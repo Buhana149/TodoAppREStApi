@@ -64,7 +64,7 @@ class _AddPageState extends State<AddPage> {
             ),
             GestureDetector(
               onTap:() async {
-                await submitTodo();
+                await submitTodo(value);
               },
                child: const Padding(
                 padding: EdgeInsets.all(8.0),
@@ -92,8 +92,7 @@ class _AddPageState extends State<AddPage> {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  Future<void> submitTodo() async {
-    final todoProvider = TodoProvider();
+  Future<void> submitTodo(TodoProvider todoProvider) async {
 
     await todoProvider.submitTodoProvider(
       categoryController.text,
