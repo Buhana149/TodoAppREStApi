@@ -32,7 +32,6 @@ class ToDoListTile extends StatelessWidget {
   }
 
   void _deleteByIdProvider() async {
-    // Access the provider and call the delete method
     final todoProvider = Provider.of<TodoProvider>(context, listen: false);
     await todoProvider.deleteByIdProvider(todo.id);
   }
@@ -50,8 +49,6 @@ class ToDoListTile extends StatelessWidget {
               openEditPage();
             } else if (value == 'delete') {
               _deleteByIdProvider();
-              //delete and remove the item
-              //   deleteById(todo.id); use provider instead
             }
           }, itemBuilder: (context) {
             return [

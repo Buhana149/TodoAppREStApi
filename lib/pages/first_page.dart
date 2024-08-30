@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp_restapi/components/colors.dart';
 import 'package:todoapp_restapi/pages/todo_page.dart';
-import 'package:todoapp_restapi/ui%20helpers/first%20page%20ui/activity_box.dart';
-import 'package:todoapp_restapi/ui%20helpers/first%20page%20ui/greeting_messages.dart';
+import 'package:todoapp_restapi/ui_helpers/first_page_ui/activity_box.dart';
+import 'package:todoapp_restapi/ui_helpers/first_page_ui/firstPage_appBar_ui.dart';
+import 'package:todoapp_restapi/ui_helpers/first_page_ui/greeting_messages.dart';
 import 'package:todoapp_restapi/utils/task_categories.dart';
-import 'package:todoapp_restapi/ui%20helpers/first%20page%20ui/today_tasks.dart';
+import 'package:todoapp_restapi/ui_helpers/first_page_ui/today_tasks.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
@@ -19,15 +20,7 @@ class _FirstPageState extends State<FirstPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       // extract this app bar as well, maybe it 
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        title: const Text(
-          'CheckBox',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      appBar: const FirstpageAppbarUi( title: 'CheckBox',),
       backgroundColor: primaryColor,
       body: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -43,7 +36,7 @@ class _FirstPageState extends State<FirstPage> {
               SizedBox(
                   height: 300,
                   child: ListView.builder(
-                    itemCount: 2,
+                    itemCount: 1,
                     itemBuilder: (context, index) {
                       return const TodoPage();
                     },

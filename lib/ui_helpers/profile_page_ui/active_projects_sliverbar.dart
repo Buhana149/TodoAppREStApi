@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp_restapi/components/font_sizes.dart';
 
-// rename this so it is more meaningful, based on it;s purpose maybe
-class SliverBox2 extends StatelessWidget {
-  const SliverBox2({super.key});
+
+class ActiveProjectsSliverbar extends StatelessWidget {
+  const ActiveProjectsSliverbar({super.key});
 
   @override
   Widget build(BuildContext context) {

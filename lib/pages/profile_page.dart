@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp_restapi/components/colors.dart';
 import 'package:todoapp_restapi/pages/drawer_page.dart';
-import 'package:todoapp_restapi/ui%20helpers/profile%20page%20ui/appbar_ui.dart';
-import 'package:todoapp_restapi/ui%20helpers/profile%20page%20ui/sliver_box_1.dart';
-import 'package:todoapp_restapi/ui%20helpers/profile%20page%20ui/sliver_box_2.dart';
-import 'package:todoapp_restapi/ui%20helpers/profile%20page%20ui/sliver_box_3.dart';
+import 'package:todoapp_restapi/ui_helpers/profile_page_ui/appbar_ui.dart';
+import 'package:todoapp_restapi/ui_helpers/profile_page_ui/my_tasks_sliverbox.dart';
+import 'package:todoapp_restapi/ui_helpers/profile_page_ui/active_projects_sliverbar.dart';
+import 'package:todoapp_restapi/ui_helpers/profile_page_ui/sliver_box_3.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -28,9 +28,9 @@ class ProfilePage extends StatelessWidget {
          const SliverToBoxAdapter(
           child: Column(
             children: [
-              SliverBox1(),
-              SliverBox2(),
-              SliverBox3(),
+              MyTasksSliverbox(),
+              ActiveProjectsSliverbar(),
+              ListOfTasks(),
             ],
           ),
          )

@@ -37,7 +37,7 @@ class TodoProvider extends ChangeNotifier {
         is_completed: isCompleted,
       );
 
-      notifyListeners(); // Notify listeners that the state has changed
+      notifyListeners(); 
     }
   }
 

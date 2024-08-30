@@ -23,14 +23,10 @@ class TodoServices {
             is_completed: e['is_completed']);
       }).toList();
       return todos;
-
-      // return List.empty();
     } else {
       throw 'Something went wrong';
     }
   }
-
-  // delete
 
   Future<void> deleteById(String id) async {
     final url = 'https://api.nstack.in/v1/todos/$id';
@@ -42,10 +38,9 @@ class TodoServices {
       throw 'Something went wrong';
     }
   }
-  // put
 
   Future<void> updateTodoCompletionStatus(Todo todo) async {
-    final url = 'https://api.nstack.in/v1/todos/${todo.id}'; // aici e buba
+    final url = 'https://api.nstack.in/v1/todos/${todo.id}';
     final uri = Uri.parse(url);
     final body = jsonEncode({
       'title': todo.title,
@@ -87,8 +82,7 @@ class TodoServices {
     }
   }
 
-  Future<bool> editData(
-      String category, String description, Todo todo) async {
+  Future<bool> editData(String category, String description, Todo todo) async {
     final body = {
       "title": category,
       "description": description,

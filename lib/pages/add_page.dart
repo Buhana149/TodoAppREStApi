@@ -4,6 +4,7 @@ import 'package:todoapp_restapi/components/button.dart';
 import 'package:todoapp_restapi/components/colors.dart';
 import 'package:todoapp_restapi/components/font_sizes.dart';
 import 'package:todoapp_restapi/provider/todo_provider.dart';
+import 'package:todoapp_restapi/ui_helpers/add_page_ui/todo_app_textfield.dart';
 
 class AddPage extends StatefulWidget {
   const AddPage({super.key});
@@ -47,25 +48,13 @@ class _AddPageState extends State<AddPage> {
                     'New objective',
                     style: small,
                   ),
-                  // this can be extracted
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: TextField(
-                      controller: categoryController,
-                      decoration: const InputDecoration(hintText: 'Category'),
-                    ),
+                  TextfieldWidget(
+                    controller: categoryController,
+                    hintText: 'Category',
                   ),
-                  // to here
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: TextField(
+                  TextfieldWidget(
                       controller: descriptionController,
-                      decoration:
-                          const InputDecoration(hintText: 'Description'),
-                    ),
-                  ),
-
-                  // controller and hint text as parameters
+                      hintText: 'Description'),
                 ],
               ),
             ),
