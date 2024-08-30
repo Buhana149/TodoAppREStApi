@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp_restapi/components/colors.dart';
 
 class MyButton extends StatelessWidget {
   final String text;
@@ -11,16 +12,17 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-                width: 400,
-                height: 50,
-                decoration: BoxDecoration(
-                    color: Colors.green[400],
-                    borderRadius: BorderRadius.circular(5)),
-                child:  Center(
-                    child: Text(text,
-                  style: const TextStyle(color: Colors.white),
-                )),
-              ),
+        width: 400,
+        height: 50,
+        decoration: BoxDecoration(
+            color:secondaryColor,
+            borderRadius: BorderRadius.circular(5)),
+        child: Center(
+            child: Text(
+          text,
+          style: const TextStyle(color: Colors.white),
+        )),
+      ),
     );
   }
 }
