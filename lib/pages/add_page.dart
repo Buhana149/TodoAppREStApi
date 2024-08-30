@@ -53,8 +53,9 @@ class _AddPageState extends State<AddPage> {
                     hintText: 'Category',
                   ),
                   TextfieldWidget(
-                      controller: descriptionController,
-                      hintText: 'Description'),
+                    controller: descriptionController,
+                    hintText: 'Description',
+                  ),
                 ],
               ),
             ),

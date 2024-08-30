@@ -14,9 +14,11 @@ class TextfieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(5.0),
-        child: TextfieldWidget(
+        child: TextField(
           controller: controller,
-          hintText: hintText,
+          decoration: InputDecoration(
+            hintText: hintText,
+          ),
         ));
   }
 }

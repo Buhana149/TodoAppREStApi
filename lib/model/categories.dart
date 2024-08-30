@@ -5,6 +5,7 @@ class Categories {
   IconData icon;
 
   Categories({
-    required this.icon, 
-    required this.type});
+    required this.icon,
+    required this.type,
+  });
 }
