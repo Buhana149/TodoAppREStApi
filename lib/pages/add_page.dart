@@ -90,14 +90,6 @@ class _AddPageState extends State<AddPage> {
   }
 
   Future<void> submitTodo(TodoProvider todoProvider) async {
-    // apelei todo provider . tododatabase add todo
-    // cu parametru de tip todo
-  //   final String id;
-  // final String title;
-  // final String description;
-  // // ignore: non_constant_identifier_names
-  // bool is_completed;
-
     await todoProvider.submitTodoProvider(
       categoryController.text,
       descriptionController.text,

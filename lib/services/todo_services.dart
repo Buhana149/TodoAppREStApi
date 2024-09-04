@@ -4,9 +4,7 @@ import 'package:todoapp_restapi/model/todo.dart';
 import 'package:todoapp_restapi/utils/todo_list_tile.dart';
 
 class TodoServices {
-  final VoidCallback callback;
-
-  TodoServices({required this.callback});
+  TodoServices();
 
   Future<List<Todo>> getAll() async {
     const url = 'https://api.nstack.in/v1/todos?page=1&limit=10';
@@ -28,14 +26,14 @@ class TodoServices {
     }
   }
 
-  Future<void> deleteById(String id) async {
+  Future<bool> deleteById(String id) async {
     final url = 'https://api.nstack.in/v1/todos/$id';
     final uri = Uri.parse(url);
     final response = await http.delete(uri);
-    if (response.statusCode == 200) {
-      callback();
+    if (response.statusCode >= 200 && response.statusCode <= 299) {
+      return true;
     } else {
-      throw 'Something went wrong';
+      throw Exception('Failed to delete todo: ${response.statusCode}');
     }
   }
 

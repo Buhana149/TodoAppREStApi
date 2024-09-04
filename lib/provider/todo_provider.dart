@@ -4,9 +4,7 @@ import 'package:todoapp_restapi/services/todo_database.dart';
 import 'package:todoapp_restapi/services/todo_services.dart';
 
 class TodoProvider extends ChangeNotifier {
-  final _service = TodoServices(
-    callback: () {},
-  );
+  final _service = TodoServices();
   final _databaseService = TodoDatabase();
   bool isLoading = false;
   List<Todo> _todos = [];
