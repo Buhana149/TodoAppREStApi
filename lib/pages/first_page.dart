@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoapp_restapi/components/colors.dart';
-import 'package:todoapp_restapi/pages/todo_page.dart';
 import 'package:todoapp_restapi/provider/todo_provider.dart';
 import 'package:todoapp_restapi/ui_helpers/first_page_ui/activity_box.dart';
 import 'package:todoapp_restapi/ui_helpers/first_page_ui/firstPage_appBar_ui.dart';

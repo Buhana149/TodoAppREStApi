@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp_restapi/model/todo.dart';
+import 'package:todoapp_restapi/services/todo_database.dart';
 import 'package:todoapp_restapi/services/todo_services.dart';
 
 class TodoProvider extends ChangeNotifier {
-  final _service = TodoServices(
-    callback: () {},
-  );
+  final _service = TodoServices();
+  final _databaseService = TodoDatabase();
   bool isLoading = false;
   List<Todo> _todos = [];
   List<Todo> get todos => _todos;
+
+  TodoProvider() {
+    _loadTodosFromHive();
+  }
 
   void screenIsLoading(bool isLoadingParam) {
     isLoading = isLoadingParam;
@@ -17,9 +21,18 @@ class TodoProvider extends ChangeNotifier {
 
   Future<void> getAllTodos() async {
     screenIsLoading(true);
-    final response = await _service.getAll();
-    _todos = response;
-    screenIsLoading(false);
+    try {
+      final response = await _service.getAll();
+      _todos = response;
+
+      for (var todo in _todos) {
+        await _databaseService.addTodoToDatabase(todo);
+      }
+    } catch (e) {
+      print('Error fetching todos: $e');
+    } finally {
+      screenIsLoading(false);
+    }
   }
 
   void updateTodo(
@@ -37,15 +50,17 @@ class TodoProvider extends ChangeNotifier {
         is_completed: isCompleted,
       );
 
-      notifyListeners(); 
+      notifyListeners();
     }
   }
 
-  Future<void> deleteByIdProvider(String id) async {
+  Future<void> deleteByIdProvider(id) async {
     screenIsLoading(true);
     try {
       await _service.deleteById(id);
       _todos.removeWhere((todo) => todo.id == id);
+
+      await _databaseService.deleteFromDatabase(id);
       notifyListeners();
     } catch (e) {
       print("Error deleting todo: $e");
@@ -61,6 +76,8 @@ class TodoProvider extends ChangeNotifier {
       final index = _todos.indexWhere((t) => t.id == todo.id);
       if (index != -1) {
         _todos[index] = todo;
+
+        await _databaseService.addTodoToDatabase(todo);
         notifyListeners();
       }
     } catch (e) {
@@ -86,7 +103,6 @@ class TodoProvider extends ChangeNotifier {
   }
 
   Future<void> editDataProvider(
-    
       String category, String description, Todo todo) async {
     try {
       bool isSuccessful = await _service.editData(
@@ -102,6 +118,12 @@ class TodoProvider extends ChangeNotifier {
       print('Error updating todo completion status: $e');
     }
 
+    notifyListeners();
+  }
+
+  Future<void> _loadTodosFromHive() async {
+    final todosFromDatabase = await _databaseService.getAllTodosFromDatabase();
+    _todos = todosFromDatabase;
     notifyListeners();
   }
 }
